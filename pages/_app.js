@@ -25,8 +25,7 @@ const InconsolataFont = Inconsolata({
 
 export default function App({ Component, pageProps }) {
   return (
-    <main
-      className={`${InterFont.variable} ${LoraFont.variable} ${InconsolataFont.variable} font-sans`}>
+    <main className={`${InterFont.variable} ${LoraFont.variable} ${InconsolataFont.variable}`}>
       <Head>
         <title>Dictionary App</title>
         <meta name='description' content='Search for the definition of a word' />
