@@ -1,6 +1,6 @@
 import { Menu, Transition } from '@headlessui/react';
-import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { Fragment } from 'react';
+import IconDown from '../public/icons/icon-arrow-down.svg';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -10,9 +10,13 @@ function Dropdown({ className }) {
   return (
     <Menu as='div' className={classNames(className, 'relative text-left')}>
       <div>
-        <Menu.Button className='flex w-full justify-center gap-1.5 font-bold items-center text-gray-700 hover:bg-gray-50'>
+        <Menu.Button className='flex w-full items-center justify-center gap-1.5 font-bold text-gray-700 hover:bg-gray-50'>
           Sans Serif
-          <ChevronDownIcon className='ml-4 h-5 w-5 text-purple' aria-hidden='true' />
+          <IconDown
+            alt='Icon Down'
+            className='ml-[18px] h-[12px] w-3 text-purple'
+            aria-hidden='true'
+          />
         </Menu.Button>
       </div>
 
@@ -24,7 +28,7 @@ function Dropdown({ className }) {
         leave='transition ease-in duration-100'
         leaveFrom='transform opacity-100 scale-100'
         leaveTo='transform scale-90'>
-        <Menu.Items className='absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+        <Menu.Items className='absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-2xl bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
           <div className='py-1'>
             <Menu.Item>
               {({ active }) => (

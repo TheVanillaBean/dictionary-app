@@ -1,22 +1,23 @@
-import Image from 'next/image';
 import Link from 'next/link';
+import MoonIcon from '../public/icons/icon-moon.svg';
 import Logo from '../public/icons/logo.svg';
 import Dropdown from './dropdown.component';
+import Toggle from './toggle.component';
 
 function Header() {
   return (
-    <header className='flex flex-1 items-center max-w-7xl mx-auto mt-14'>
-      <div className='flex lg:flex-1 relative'>
+    <header className='mx-auto mt-14 flex max-w-7xl flex-1 items-center'>
+      <div className='relative flex lg:flex-1'>
         <Link href='#'>
           <span className='sr-only'>Dictionary App</span>
-          <Image src={Logo} alt='Product logo' className='h-8' />
+          <Logo alt='Product logo' />
         </Link>
       </div>
 
-      <div className='flex items-center gap-6 divide-x-2'>
-        <Dropdown className='px-4' />
-        <Dropdown className='px-4' />
-        <Dropdown className='px-4' />
+      <div className='flex items-center'>
+        <Dropdown className='mx-6 border-r-2 px-6' />
+        <Toggle />
+        <MoonIcon alt='Moon' className='ml-5' />
       </div>
     </header>
   );
