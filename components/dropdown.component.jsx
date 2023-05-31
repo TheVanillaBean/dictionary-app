@@ -1,14 +1,11 @@
 import { Menu, Transition } from '@headlessui/react';
+import clsx from 'clsx';
 import { Fragment } from 'react';
 import IconDown from '../public/icons/icon-arrow-down.svg';
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ');
-}
-
 function Dropdown({ className }) {
   return (
-    <Menu as='div' className={classNames(className, 'relative text-left')}>
+    <Menu as='div' className={clsx(className, 'relative text-left')}>
       <div>
         <Menu.Button className='flex w-full items-center justify-center gap-1.5 font-bold text-gray-700 hover:bg-gray-50'>
           Sans Serif
@@ -34,7 +31,7 @@ function Dropdown({ className }) {
               {({ active }) => (
                 <a
                   href='#'
-                  className={classNames(
+                  className={clsx(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                     'block px-4 py-2 text-sm'
                   )}>
@@ -46,7 +43,7 @@ function Dropdown({ className }) {
               {({ active }) => (
                 <a
                   href='#'
-                  className={classNames(
+                  className={clsx(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                     'block px-4 py-2 text-sm'
                   )}>
@@ -58,7 +55,7 @@ function Dropdown({ className }) {
               {({ active }) => (
                 <a
                   href='#'
-                  className={classNames(
+                  className={clsx(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                     'block px-4 py-2 text-sm'
                   )}>
