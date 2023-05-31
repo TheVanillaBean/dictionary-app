@@ -23,10 +23,7 @@ module.exports = {
             // Base
             color: 'var(--tw-prose-body)',
             lineHeight: theme('lineHeight.7'),
-            '> *': {
-              marginTop: theme('spacing.10'),
-              marginBottom: theme('spacing.10'),
-            },
+
             p: {
               marginTop: theme('spacing.7'),
               marginBottom: theme('spacing.7'),
@@ -40,20 +37,17 @@ module.exports = {
             h1: {
               fontSize: '4rem',
               lineHeight: theme('lineHeight.7'),
-              marginTop: theme('spacing.20'),
-              marginBottom: theme('spacing.4'),
+              marginBottom: theme('spacing.1'),
             },
             h2: {
               fontSize: theme('fontSize.2xl')[0],
               lineHeight: theme('lineHeight.7'),
-              marginTop: theme('spacing.20'),
-              marginBottom: theme('spacing.4'),
+              marginBottom: theme('spacing.1'),
             },
             h3: {
               fontSize: theme('fontSize.lg')[0],
               lineHeight: theme('lineHeight.7'),
-              marginTop: theme('spacing.16'),
-              marginBottom: theme('spacing.4'),
+              marginBottom: theme('spacing.6'),
             },
             ':is(h2, h3) + *': {
               marginTop: 0,
