@@ -11,7 +11,7 @@ function Definition({ className, meaning: { partOfSpeech, definitions, synonyms 
         <h3 className='font-normal text-gray-500'>Meaning</h3>
         <ul className='ml-5 marker:text-purple'>
           {definitions.map(({ definition }) => (
-            <li>{definition}</li>
+            <li key={definition}>{definition}</li>
           ))}
         </ul>
       </div>

@@ -10,7 +10,7 @@ export const AppContext = createContext();
 
 const initialState = {
   darkMode: false,
-  font: 'font-sans',
+  font: 'font-serif',
   definition: {},
 };
 
@@ -27,13 +27,13 @@ const appReducer = (state = initialState, action) => {
     case APP_ACTIONS.UPDATE_FONT:
       return {
         ...state,
-        font: payload.font,
+        font: payload,
       };
 
     case APP_ACTIONS.SET_WORD_DEFINITION:
       return {
         ...state,
-        definition: payload.definition,
+        definition: payload,
       };
     default: {
       return state;

@@ -3,12 +3,14 @@ import Definition from '@/components/definition.component.jsx';
 import Header from '@/components/header.component.jsx';
 import Search from '@/components/search.component.jsx';
 import Word from '@/components/word.component.jsx';
-import { useRef, useState } from 'react';
+import { AppContext } from '@/context/appContext.context.jsx';
+import { useContext, useRef, useState } from 'react';
 import useWord from '../hooks/useWord.hook.jsx';
 
 export default function Home() {
   const wordInputRef = useRef();
   const [fetchWord, setFetchWord] = useState({ shouldFetch: false, word: '' });
+  const { appState, dispatchState } = useContext(AppContext);
 
   const { data: definitions, isLoading, error } = useWord(fetchWord.shouldFetch, fetchWord.word);
 
@@ -40,7 +42,7 @@ export default function Home() {
   }
 
   return (
-    <div className='font-serif'>
+    <div className={`${appState.font} dark`}>
       <Header className='mb-14' />
       <Container>
         <Search className='mb-11' onSubmit={onSubmit} ref={wordInputRef} />
