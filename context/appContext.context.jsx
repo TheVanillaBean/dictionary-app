@@ -8,6 +8,15 @@ export const APP_ACTIONS = {
 
 export const AppContext = createContext();
 
+export const formatFont = (font) => {
+  if (font === 'font-sans') {
+    return 'Sans Serif';
+  } else if (font === 'font-serif') {
+    return 'Serif';
+  }
+  return 'Mono';
+};
+
 const initialState = {
   darkMode: false,
   font: 'font-serif',

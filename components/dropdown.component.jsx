@@ -1,4 +1,4 @@
-import { APP_ACTIONS, AppContext } from '@/context/appContext.context';
+import { APP_ACTIONS, AppContext, formatFont } from '@/context/appContext.context';
 import { Menu, Transition } from '@headlessui/react';
 import clsx from 'clsx';
 import { Fragment, useContext } from 'react';
@@ -11,20 +11,11 @@ function Dropdown({ className }) {
     dispatchApp({ type: APP_ACTIONS.UPDATE_FONT, payload: option });
   };
 
-  const formatFont = () => {
-    if (appState.font === 'font-sans') {
-      return 'Sans Serif';
-    } else if (appState.font === 'font-serif') {
-      return 'Serif';
-    }
-    return 'Mono';
-  };
-
   return (
     <Menu as='div' className={clsx(className, 'relative text-left')}>
       <div>
         <Menu.Button className='flex w-full items-center justify-center gap-1.5 font-bold text-gray-700 hover:bg-gray-50'>
-          {formatFont()}
+          {formatFont(appState.font)}
           <IconDown
             alt='Icon Down'
             className='ml-[18px] h-[12px] w-3 text-purple'
