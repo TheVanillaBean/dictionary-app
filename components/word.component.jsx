@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { useState } from 'react';
 import PlayBtnSVG from './PlayBtnSVG.jsx';
 
-function Word({ className }) {
+function Word({ className, definition }) {
   const [darkMode, toggleDarkMode] = useState(false);
 
   const handleHover = () => {
@@ -12,8 +12,8 @@ function Word({ className }) {
   return (
     <div className={clsx(className, 'flex justify-between')}>
       <div className='prose flex flex-col'>
-        <h1>keyboard</h1>
-        <h2 className='font-normal text-purple'>/ˈkiːbɔːd/</h2>
+        <h1>{definition.word}</h1>
+        <h2 className='font-normal text-purple'>{definition.phonetic}</h2>
       </div>
       <PlayBtnSVG
         dark={darkMode.toString()}

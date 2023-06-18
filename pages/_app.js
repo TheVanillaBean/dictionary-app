@@ -1,3 +1,4 @@
+import AppProvider from '@/context/appContext.context';
 import '@/styles/globals.css';
 import { Inconsolata, Inter, Lora } from 'next/font/google';
 import Head from 'next/head';
@@ -26,12 +27,14 @@ const InconsolataFont = Inconsolata({
 export default function App({ Component, pageProps }) {
   return (
     <main className={`${InterFont.variable} ${LoraFont.variable} ${InconsolataFont.variable}`}>
-      <Head>
-        <title>Dictionary App</title>
-        <meta name='description' content='Search for the definition of a word' />
-        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-      </Head>
-      <Component {...pageProps} />
+      <AppProvider>
+        <Head>
+          <title>Dictionary App</title>
+          <meta name='description' content='Search for the definition of a word' />
+          <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+        </Head>
+        <Component {...pageProps} />
+      </AppProvider>
     </main>
   );
 }
