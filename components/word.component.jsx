@@ -13,11 +13,15 @@ function Word({ className }) {
   } = useContext(AppContext);
 
   const handleHover = () => {
-    toggleDarkIcon(!darkIcon);
+    if (validPhoneticAudio.length > 0) {
+      toggleDarkIcon(!darkIcon);
+    }
   };
 
   const playAudio = () => {
-    audioRef.current.play();
+    if (validPhoneticAudio.length > 0) {
+      audioRef.current.play();
+    }
   };
 
   return (
@@ -26,14 +30,14 @@ function Word({ className }) {
         <h1>{word}</h1>
         <h2 className='font-normal text-purple'>{phonetic}</h2>
       </div>
-      <button>
+      <button className={`${validPhoneticAudio.length === 0 && 'pointer-events-none'}`}>
         <audio ref={audioRef} src={validPhoneticAudio} />
         <PlayBtnSVG
           dark={darkIcon.toString()}
           onMouseEnter={handleHover}
           onMouseLeave={handleHover}
           onClick={playAudio}
-          className='cursor-pointer fill-purple'
+          className='fill-purple'
         />
       </button>
     </div>

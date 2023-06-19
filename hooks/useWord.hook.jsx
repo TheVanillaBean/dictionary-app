@@ -14,8 +14,8 @@ export async function fetchWord([url, word]) {
           return {
             word,
             meanings,
-            phonetic: validPhonetic.text,
-            validPhoneticAudio: validPhonetic.audio,
+            phonetic: validPhonetic?.text ?? phonetic,
+            validPhoneticAudio: validPhonetic?.audio ?? '',
             sourceUrl,
           };
         }
