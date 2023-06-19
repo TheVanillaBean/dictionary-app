@@ -56,7 +56,7 @@ module.exports = {
             a: {
               color: 'var(--tw-prose-links)',
               fontWeight: theme('fontWeight.semibold'),
-              textDecoration: 'underline',
+              textDecoration: 'no-underline	',
               textDecorationColor: 'var(--tw-prose-underline)',
               transitionProperty: 'color, text-decoration-color',
               transitionDuration: theme('transitionDuration.150'),

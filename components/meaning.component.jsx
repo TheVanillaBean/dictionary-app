@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import Link from 'next/link';
 
 function Meaning({ className, meaning: { partOfSpeech, definitions, synonyms } }) {
   return (
@@ -18,7 +19,16 @@ function Meaning({ className, meaning: { partOfSpeech, definitions, synonyms } }
       {synonyms.length > 0 && (
         <div className='prose flex items-center gap-6'>
           <h3 className='mb-0 font-normal text-gray-500'>Synonyms</h3>
-          <p className='text-xl font-bold text-purple'>{synonyms.join(', ')}</p>
+          <div>
+            {synonyms.map((synonym, index) => {
+              return (
+                <Link href={synonym} className='text-[20px] font-bold text-purple'>
+                  {synonym}
+                  {index < synonyms.length - 1 ? ', ' : ''}
+                </Link>
+              );
+            })}
+          </div>
         </div>
       )}
     </div>
