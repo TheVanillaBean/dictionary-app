@@ -4,7 +4,7 @@ function Meaning({ className, meaning: { partOfSpeech, definitions, synonyms } }
   return (
     <div className={clsx(className)}>
       <div className='mb-10 flex items-center justify-stretch gap-6'>
-        <h2 className='text-2xl font-normal italic'>{partOfSpeech}</h2>
+        <h2 className='text-2xl font-bold italic'>{partOfSpeech}</h2>
         <div className='w-full border-t border-gray-400' aria-hidden='true' />
       </div>
       <div className='prose mb-10 max-w-4xl'>

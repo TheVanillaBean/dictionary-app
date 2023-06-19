@@ -8,14 +8,14 @@ export async function fetchWord([url, word]) {
     if (data) {
       const definitions = Object.values(data).map(
         ({ word, meanings, phonetic, phonetics, sourceUrls }) => {
-          const validPhoneticAudio = phonetics.find((phonetic) => phonetic.audio).audio;
+          const validPhonetic = phonetics.find((phonetic) => phonetic.audio && phonetic.text);
           const sourceUrl = sourceUrls.length > 0 ? sourceUrls[0] : null;
 
           return {
             word,
             meanings,
-            phonetic,
-            validPhoneticAudio,
+            phonetic: validPhonetic.text,
+            validPhoneticAudio: validPhonetic.audio,
             sourceUrl,
           };
         }
