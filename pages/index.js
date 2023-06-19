@@ -2,22 +2,28 @@ import Container from '@/components/container.component.jsx';
 import Definition from '@/components/definition.component.jsx';
 import Header from '@/components/header.component.jsx';
 import Search from '@/components/search.component.jsx';
-import Word from '@/components/word.component.jsx';
-import { AppContext } from '@/context/appContext.context.jsx';
-import { useContext, useRef, useState } from 'react';
+import { APP_ACTIONS, AppContext } from '@/context/appContext.context.jsx';
+import { useContext, useEffect, useRef, useState } from 'react';
 import useWord from '../hooks/useWord.hook.jsx';
 
 export default function Home() {
   const wordInputRef = useRef();
   const [fetchWord, setFetchWord] = useState({ shouldFetch: false, word: '' });
-  const { appState, dispatchState } = useContext(AppContext);
+  const {
+    appState: { font, darkMode, definition },
+    dispatchApp,
+  } = useContext(AppContext);
 
-  const { data: definitions, isLoading, error } = useWord(fetchWord.shouldFetch, fetchWord.word);
+  const { data, isLoading, error } = useWord(fetchWord.shouldFetch, fetchWord.word);
 
   const onSubmit = (e) => {
     e.preventDefault();
     setFetchWord({ shouldFetch: true, word: wordInputRef.current.value });
   };
+
+  useEffect(() => {
+    dispatchApp({ type: APP_ACTIONS.SET_WORD_DEFINITION, payload: data });
+  }, [data]);
 
   if (isLoading) {
     return (
@@ -35,6 +41,7 @@ export default function Home() {
       <div className='font-serif'>
         <Header className='mb-14' />
         <Container>
+          <Search className='mb-11' onSubmit={onSubmit} ref={wordInputRef} />
           <h1>Error</h1>
         </Container>
       </div>
@@ -42,17 +49,12 @@ export default function Home() {
   }
 
   return (
-    <div className={`${appState.font} dark`}>
+    <div className={`${font} ${darkMode}`}>
       <Header className='mb-14' />
       <Container>
         <Search className='mb-11' onSubmit={onSubmit} ref={wordInputRef} />
 
-        {definitions && <Word className='mb-10' definition={definitions[0]} />}
-
-        {definitions &&
-          definitions[0].meanings.map((meaning) => (
-            <Definition key={meaning.partOfSpeech} className='w-7xl mb-10' meaning={meaning} />
-          ))}
+        {definition && <Definition />}
       </Container>
     </div>
   );

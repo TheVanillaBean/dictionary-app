@@ -20,7 +20,7 @@ export const formatFont = (font) => {
 const initialState = {
   darkMode: false,
   font: 'font-serif',
-  definition: {},
+  definition: null,
 };
 
 const appReducer = (state = initialState, action) => {

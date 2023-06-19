@@ -6,11 +6,22 @@ export async function fetchWord([url, word]) {
     const { data } = await axios.get(`${url}${word}`);
 
     if (data) {
-      const definitions = Object.values(data).map((definition) => {
-        return definition;
-      });
+      const definitions = Object.values(data).map(
+        ({ word, meanings, phonetic, phonetics, sourceUrls }) => {
+          const validPhoneticAudio = phonetics.find((phonetic) => phonetic.audio).audio;
+          const sourceUrl = sourceUrls.length > 0 ? sourceUrls[0] : null;
 
-      return definitions;
+          return {
+            word,
+            meanings,
+            phonetic,
+            validPhoneticAudio,
+            sourceUrl,
+          };
+        }
+      );
+
+      return definitions[0];
     }
 
     throw new Error('Could not retrieve events');
