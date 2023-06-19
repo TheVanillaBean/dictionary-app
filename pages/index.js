@@ -5,37 +5,33 @@ import Header from '@/components/header.component.jsx';
 import Search from '@/components/search.component.jsx';
 import { APP_ACTIONS, AppContext } from '@/context/appContext.context.jsx';
 import { useContext, useEffect, useRef, useState } from 'react';
+import LoadingBar from 'react-top-loading-bar';
 import useWord from '../hooks/useWord.hook.jsx';
 
 export default function Home() {
-  const wordInputRef = useRef();
+  const wordInputRef = useRef(null);
+  const progressBarRef = useRef(null);
+
   const [fetchWord, setFetchWord] = useState({ shouldFetch: false, word: '' });
   const {
     appState: { font, darkMode, definition },
     dispatchApp,
   } = useContext(AppContext);
 
-  const { data, isLoading, error } = useWord(fetchWord.shouldFetch, fetchWord.word);
+  const { data, error } = useWord(fetchWord.shouldFetch, fetchWord.word);
 
   const onSubmit = (e) => {
     e.preventDefault();
-    setFetchWord({ shouldFetch: true, word: wordInputRef.current.value });
+    if (wordInputRef.current.value !== fetchWord.word) {
+      setFetchWord({ shouldFetch: true, word: wordInputRef.current.value });
+      progressBarRef.current.continuousStart();
+    }
   };
 
   useEffect(() => {
     dispatchApp({ type: APP_ACTIONS.SET_WORD_DEFINITION, payload: data });
+    progressBarRef.current.complete();
   }, [data]);
-
-  // if (isLoading) {
-  //   return (
-  //     <div className='font-serif'>
-  //       <Header className='mb-14' />
-  //       <Container>
-  //         <h1>Loading...</h1>
-  //       </Container>
-  //     </div>
-  //   );
-  // }
 
   if (error) {
     return errorUI();
@@ -43,6 +39,8 @@ export default function Home() {
 
   return (
     <div className={`${font} ${darkMode}`}>
+      <LoadingBar color='#A445ED' ref={progressBarRef} height={4} />
+
       <Header className='mb-14' />
       <Container>
         <Search className='mb-11' onSubmit={onSubmit} ref={wordInputRef} />
@@ -55,6 +53,8 @@ export default function Home() {
   function errorUI() {
     return (
       <div className={`${font} ${darkMode}`}>
+        <LoadingBar color='#A445ED' ref={progressBarRef} height={4} />
+
         <Header className='mb-14' />
         <Container className={'prose text-center'}>
           <Search className='mb-32' onSubmit={onSubmit} ref={wordInputRef} />

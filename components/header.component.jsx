@@ -7,7 +7,11 @@ import Toggle from './toggle.component';
 
 function Header({ className }) {
   return (
-    <header className={clsx(className, 'mx-auto mt-14 flex max-w-7xl flex-1 items-center')}>
+    <header
+      className={clsx(
+        className,
+        'mx-auto mt-14 flex max-w-7xl flex-1 items-center justify-around'
+      )}>
       <div className='relative flex lg:flex-1'>
         <Link href='#'>
           <span className='sr-only'>Dictionary App</span>
