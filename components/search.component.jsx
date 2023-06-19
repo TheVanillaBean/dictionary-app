@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import React, { useState } from 'react';
 import SearchIcon from '../public/icons/icon-search.svg';
 
-function Search({ className, onSubmit }, ref) {
+function Search({ className, onSubmit, error = false, empty = false }, ref) {
   const [word, updateWord] = useState('');
 
   return (
@@ -16,7 +16,10 @@ function Search({ className, onSubmit }, ref) {
             type='text'
             name='search'
             id='search'
-            className='w-full rounded-xl border-0 bg-gray-300 py-5 pl-6 font-bold text-gray-700 ring-gray-300 placeholder:text-gray-700 placeholder:opacity-25 focus:ring-1 focus:ring-purple sm:text-base'
+            className={clsx(
+              `w-full rounded-xl border-0 bg-gray-300 py-5 pl-6 font-bold text-gray-700 ring-1 ring-gray-300 placeholder:text-gray-700 placeholder:opacity-25 focus:ring-1 sm:text-base`,
+              error ? 'ring-red focus:ring-red' : 'focus:ring-purple'
+            )}
             placeholder='Search for any word'
             value={word}
             onChange={(e) => updateWord(e.target.value)}
@@ -26,6 +29,7 @@ function Search({ className, onSubmit }, ref) {
             <SearchIcon className='h-4 w-4 text-gray-400' aria-hidden='true' />
           </div>
         </div>
+        {empty && <p className='mt-2 text-start text-xl text-red'>Whoops, can't be empty...</p>}
       </form>
     </div>
   );

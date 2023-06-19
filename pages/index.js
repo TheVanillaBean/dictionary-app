@@ -57,7 +57,13 @@ export default function Home() {
 
         <Header className='mb-14' />
         <Container className={'prose text-center'}>
-          <Search className='mb-32' onSubmit={onSubmit} ref={wordInputRef} />
+          <Search
+            className='mb-32'
+            onSubmit={onSubmit}
+            ref={wordInputRef}
+            error={error}
+            empty={fetchWord.word.length === 0}
+          />
           <Emoji symbol='0x0001F615' label='Sad emoji' className='text-[64px]' />
           <h3>No Definitions Found</h3>
           <p className='text-[18px] leading-6 text-gray-500'>
