@@ -22,7 +22,7 @@ function Meaning({ className, meaning: { partOfSpeech, definitions, synonyms } }
           <div>
             {synonyms.map((synonym, index) => {
               return (
-                <Link href={synonym} className='text-[20px] font-bold text-purple'>
+                <Link key={index} href={synonym} className='text-[20px] font-bold text-purple'>
                   {synonym}
                   {index < synonyms.length - 1 ? ', ' : ''}
                 </Link>

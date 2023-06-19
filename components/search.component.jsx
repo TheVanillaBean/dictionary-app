@@ -29,7 +29,9 @@ function Search({ className, onSubmit, error = false, empty = false }, ref) {
             <SearchIcon className='h-4 w-4 text-gray-400' aria-hidden='true' />
           </div>
         </div>
-        {empty && <p className='mt-2 text-start text-xl text-red'>Whoops, can't be empty...</p>}
+        {empty && (
+          <p className='mt-2 text-start text-xl text-red'>Whoops, can&apos;t be empty...</p>
+        )}
       </form>
     </div>
   );

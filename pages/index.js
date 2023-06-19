@@ -31,7 +31,7 @@ export default function Home() {
   useEffect(() => {
     dispatchApp({ type: APP_ACTIONS.SET_WORD_DEFINITION, payload: data });
     progressBarRef.current.complete();
-  }, [data]);
+  }, [data, dispatchApp]);
 
   if (error) {
     return errorUI();
