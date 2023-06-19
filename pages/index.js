@@ -67,8 +67,8 @@ export default function Home() {
           <Emoji symbol='0x0001F615' label='Sad emoji' className='text-[64px]' />
           <h3>No Definitions Found</h3>
           <p className='text-[18px] leading-6 text-gray-500'>
-            Sorry pal, we couldn't find definitions for the word you were looking for. You can try
-            the search again at later time or head to the web instead.
+            Sorry pal, we couldn&apos;t find definitions for the word you were looking for. You can
+            try the search again at later time or head to the web instead.
           </p>
         </Container>
       </div>
