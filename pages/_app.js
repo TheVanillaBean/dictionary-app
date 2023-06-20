@@ -31,7 +31,7 @@ export default function App({ Component, pageProps }) {
         <Head>
           <title>Dictionary App</title>
           <meta name='description' content='Search for the definition of a word' />
-          <meta name='viewport' content='width=device-width, user-scalable=no' />
+          <meta name='viewport' content='width=device-width, initial-scale=1.0' />
         </Head>
         <Component {...pageProps} />
       </AppProvider>
