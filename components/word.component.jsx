@@ -27,7 +27,7 @@ function Word({ className }) {
   return (
     <div className={clsx(className, 'flex justify-between')}>
       <div className='prose flex flex-col dark:prose-invert'>
-        <h1>{word}</h1>
+        <h1 className='text-5xl sm:text-[4rem]'>{word}</h1>
         <h2 className='font-normal text-purple'>{phonetic}</h2>
       </div>
       <button className={`${validPhoneticAudio.length === 0 && 'pointer-events-none'}`}>
