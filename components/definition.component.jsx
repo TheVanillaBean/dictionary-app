@@ -1,4 +1,5 @@
 import { AppContext } from '@/context/appContext.context';
+import Link from 'next/link';
 import { useContext } from 'react';
 import Meaning from './meaning.component';
 import Word from './word.component';
@@ -22,7 +23,14 @@ function Definition() {
       <div className='mb-[21px] w-full border-t border-gray-400' aria-hidden='true' />
 
       <h3 className='pb-10 text-[14px] leading-[17px] text-gray-500'>
-        Source <span className='ml-6 text-gray-700 dark:text-white'>{sourceUrl}</span>
+        Source{' '}
+        <Link
+          className='ml-6 text-gray-700 dark:text-white'
+          href={sourceUrl}
+          rel='noopener noreferrer'
+          target='_blank'>
+          {sourceUrl}
+        </Link>
       </h3>
     </>
   );
