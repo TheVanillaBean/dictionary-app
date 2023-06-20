@@ -26,7 +26,7 @@ function Word({ className }) {
 
   return (
     <div className={clsx(className, 'flex justify-between')}>
-      <div className='prose flex flex-col'>
+      <div className='prose flex flex-col dark:prose-invert'>
         <h1>{word}</h1>
         <h2 className='font-normal text-purple'>{phonetic}</h2>
       </div>

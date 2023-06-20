@@ -10,7 +10,7 @@ function Header({ className }) {
     <header
       className={clsx(
         className,
-        'mx-auto mt-14 flex max-w-7xl flex-1 items-center justify-around'
+        'mx-auto flex max-w-7xl flex-1 items-center justify-around pt-14'
       )}>
       <div className='relative flex lg:flex-1'>
         <Link href='#'>

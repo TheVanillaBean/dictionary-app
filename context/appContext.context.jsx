@@ -18,7 +18,7 @@ export const formatFont = (font) => {
 };
 
 const initialState = {
-  darkMode: false,
+  darkMode: true,
   font: 'font-serif',
   definition: null,
 };

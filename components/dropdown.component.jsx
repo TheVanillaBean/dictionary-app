@@ -14,7 +14,7 @@ function Dropdown({ className }) {
   return (
     <Menu as='div' className={clsx(className, 'relative text-left')}>
       <div>
-        <Menu.Button className='flex w-full items-center justify-center gap-1.5 font-bold text-gray-700 hover:bg-gray-50'>
+        <Menu.Button className='flex w-full items-center justify-center gap-1.5 font-bold text-gray-700 hover:bg-gray-50 dark:text-white dark:hover:bg-gray-700 '>
           {formatFont(appState.font)}
           <IconDown
             alt='Icon Down'
@@ -32,7 +32,7 @@ function Dropdown({ className }) {
         leave='transition ease-in duration-100'
         leaveFrom='transform opacity-100 scale-100'
         leaveTo='transform scale-90'>
-        <Menu.Items className='absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-2xl bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none'>
+        <Menu.Items className='absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-2xl bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-black dark:shadow-dropdown-dark dark:ring-1 dark:ring-purple'>
           <div className='py-1'>
             <Menu.Item>
               {({ active }) => (
@@ -40,8 +40,10 @@ function Dropdown({ className }) {
                   href='#'
                   onClick={() => handleClick('font-sans')}
                   className={clsx(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm'
+                    active
+                      ? 'bg-gray-100 text-gray-900 dark:bg-transparent dark:text-purple'
+                      : 'text-gray-700',
+                    'block px-4 py-2 text-sm font-bold dark:text-white'
                   )}>
                   Sans Serif
                 </a>
@@ -53,8 +55,10 @@ function Dropdown({ className }) {
                   href='#'
                   onClick={() => handleClick('font-serif')}
                   className={clsx(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm'
+                    active
+                      ? 'bg-gray-100 text-gray-900 dark:bg-transparent dark:text-purple'
+                      : 'text-gray-700',
+                    'block px-4 py-2 text-sm font-bold dark:text-white'
                   )}>
                   Serif
                 </a>
@@ -66,8 +70,10 @@ function Dropdown({ className }) {
                   href='#'
                   onClick={() => handleClick('font-mono')}
                   className={clsx(
-                    active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
-                    'block px-4 py-2 text-sm'
+                    active
+                      ? 'bg-gray-100 text-gray-900 dark:bg-transparent dark:text-purple'
+                      : 'text-gray-700',
+                    'block px-4 py-2 text-sm font-bold dark:text-white'
                   )}>
                   Mono
                 </a>

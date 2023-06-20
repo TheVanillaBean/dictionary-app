@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'class',
   content: [
     './pages/**/*.{js,ts,jsx,tsx,mdx}',
     './components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -96,6 +97,9 @@ module.exports = {
         },
         purple: '#A445ED',
         red: '#FF5252',
+      },
+      boxShadow: {
+        'dropdown-dark': '0px 5px 30px #A445ED',
       },
       fontFamily: {
         sans: ['var(--font-inter)', 'sans-serif'],

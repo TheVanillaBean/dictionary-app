@@ -38,15 +38,17 @@ export default function Home() {
   }
 
   return (
-    <div className={`${font} ${darkMode}`}>
-      <LoadingBar color='#A445ED' ref={progressBarRef} height={4} />
+    <div className={`${font} ${darkMode && 'dark'}`}>
+      <div className='h-full min-h-screen dark:bg-black'>
+        <LoadingBar color='#A445ED' ref={progressBarRef} height={4} />
 
-      <Header className='mb-14' />
-      <Container>
-        <Search className='mb-11' onSubmit={onSubmit} ref={wordInputRef} />
+        <Header className='mb-14' />
+        <Container>
+          <Search className='mb-11' onSubmit={onSubmit} ref={wordInputRef} />
 
-        {definition && <Definition />}
-      </Container>
+          {definition && <Definition />}
+        </Container>
+      </div>
     </div>
   );
 

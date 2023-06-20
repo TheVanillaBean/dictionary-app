@@ -21,8 +21,8 @@ function Definition() {
 
       <div className='mb-[21px] w-full border-t border-gray-400' aria-hidden='true' />
 
-      <h3 className='mb-10 text-[14px] leading-[17px] text-gray-500'>
-        Source <span className='ml-6 text-gray-700'>{sourceUrl}</span>
+      <h3 className='pb-10 text-[14px] leading-[17px] text-gray-500'>
+        Source <span className='ml-6 text-gray-700 dark:text-white'>{sourceUrl}</span>
       </h3>
     </>
   );

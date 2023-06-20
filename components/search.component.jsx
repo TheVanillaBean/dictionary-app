@@ -17,7 +17,7 @@ function Search({ className, onSubmit, error = false, empty = false }, ref) {
             name='search'
             id='search'
             className={clsx(
-              `w-full rounded-xl border-0 bg-gray-300 py-5 pl-6 font-bold text-gray-700 ring-1 ring-gray-300 placeholder:text-gray-700 placeholder:opacity-25 focus:ring-1 sm:text-base`,
+              `dark:autofill:shadow-[inset_0_0_0px_1000px_rgb(255,255,255, 0.1)] w-full rounded-xl border-0 bg-gray-300  py-5 pl-6 font-bold text-gray-700 ring-1 ring-gray-300 placeholder:text-gray-700 placeholder:opacity-25 focus:ring-1 dark:bg-black dark:text-white dark:ring-purple dark:placeholder:text-white dark:placeholder:opacity-60 dark:autofill:text-white sm:text-base`,
               error ? 'ring-red focus:ring-red' : 'focus:ring-purple'
             )}
             placeholder='Search for any word'
