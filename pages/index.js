@@ -4,15 +4,22 @@ import Emoji from '@/components/emoji.component.jsx';
 import Header from '@/components/header.component.jsx';
 import Search from '@/components/search.component.jsx';
 import { APP_ACTIONS, AppContext } from '@/context/appContext.context.jsx';
+import { useRouter } from 'next/router.js';
 import { useContext, useEffect, useRef, useState } from 'react';
 import LoadingBar from 'react-top-loading-bar';
 import useWord from '../hooks/useWord.hook.jsx';
 
 export default function Home() {
+  const router = useRouter();
+  const wordParam = router.query.word;
+
   const wordInputRef = useRef(null);
   const progressBarRef = useRef(null);
 
-  const [fetchWord, setFetchWord] = useState({ shouldFetch: false, word: '' });
+  const [fetchWord, setFetchWord] = useState({
+    shouldFetch: wordParam?.length > 0 ? true : false,
+    word: wordParam?.length > 0 ? wordParam : '',
+  });
   const {
     appState: { font, darkMode, definition },
     dispatchApp,
@@ -24,6 +31,10 @@ export default function Home() {
     e.preventDefault();
     if (wordInputRef.current.value !== fetchWord.word) {
       setFetchWord({ shouldFetch: true, word: wordInputRef.current.value });
+      router.push({
+        pathname: '/',
+        query: { word: wordInputRef.current.value },
+      });
       progressBarRef.current.continuousStart();
     }
   };
@@ -78,4 +89,15 @@ export default function Home() {
       </div>
     );
   }
+}
+
+export async function getServerSideProps(context) {
+  const { query } = context;
+  const word = query.word ?? '';
+
+  return {
+    props: {
+      word,
+    },
+  };
 }
